@@ -218,7 +218,6 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Profile />
               </AppLayout>
@@ -229,7 +228,6 @@ function App() {
           path="/profile/edit"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <EditProfile />
               </AppLayout>
@@ -240,7 +238,6 @@ function App() {
           path="/notifications"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Notifications />
               </AppLayout>
