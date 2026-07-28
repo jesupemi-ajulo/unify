@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { opportunityTypes } from "../../lib/dummyData";
 import { ArrowLeft } from "lucide-react";
+import Button from "../../components/ui/Button";
 const PostOpportunity = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -95,12 +96,9 @@ const PostOpportunity = () => {
             required
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-[#7c6ff7] text-white py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#6458e8] transition mt-2"
-        >
+        <Button type="submit" className="w-full mt-2">
           Post Opportunity
-        </button>
+        </Button>
       </form>
     </div>
   );

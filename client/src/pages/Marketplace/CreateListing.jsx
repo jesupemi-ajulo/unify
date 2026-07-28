@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { listingCategories } from "../../lib/dummyData";
 import { ArrowLeft } from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const CreateListing = () => {
   const navigate = useNavigate();
@@ -67,7 +68,9 @@ const CreateListing = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold mb-1.5 mt-4">Price</label>
+          <label className="block text-sm font-semibold mb-1.5 mt-4">
+            Price
+          </label>
           <input
             type="text"
             value={price}
@@ -113,12 +116,9 @@ const CreateListing = () => {
             </select>
           </div>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-[#7c6ff7] text-white py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#6458e8] transition mt-2"
-        >
+        <Button type="submit" className="w-full mt-2">
           Create Listing
-        </button>
+        </Button>
       </form>
     </div>
   );

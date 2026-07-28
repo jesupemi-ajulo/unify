@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { eventCategories } from "../../lib/dummyData";
 import { ArrowLeft } from "lucide-react";
+import Button from "../../components/ui/Button";
 const CreateEvent = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -100,7 +101,7 @@ const CreateEvent = () => {
             className="w-full px-3 py-2.5 md:px-4 md:py-3 border border-gray-200 rounded-lg text-sm md:text-base outline-none focus:border-[#7c6ff7] bg-white"
             required
           >
-            <option value="" >Select a category</option>
+            <option value="">Select a category</option>
             {categoriesWithoutAll.map((cat) => (
               <option value={cat} key={cat}>
                 {cat}
@@ -108,12 +109,9 @@ const CreateEvent = () => {
             ))}
           </select>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-[#7c6ff7] text-white py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#6458e8] transition mt-2"
-        >
+        <Button type="submit" className="w-full mt-2">
           Create Event
-        </button>
+        </Button>
       </form>
     </div>
   );

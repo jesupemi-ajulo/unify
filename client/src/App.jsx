@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Onboarding from "./pages/Auth/Onboarding";
@@ -20,10 +20,16 @@ import CreateClub from "./pages/Clubs/CreateClub";
 import Noticeboard from "./pages/Noticeboard/Noticeboard";
 import CreateNotice from "./pages/Noticeboard/CreateNotice";
 import Resources from "./pages/Resources/Resources";
+import UploadResource from "./pages/Resources/UploadResource";
+import Profile from "./pages/Profile/Profile";
+import EditProfile from "./pages/Profile/EditProfile";
+import Notifications from "./pages/Notifications/Notifications";
+import { ToastContainer } from "react-toastify";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -42,7 +48,6 @@ function App() {
           path="/events"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Events />
               </AppLayout>
@@ -81,7 +86,6 @@ function App() {
           path="/opportunities"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Opportunities />
               </AppLayout>
@@ -92,7 +96,6 @@ function App() {
           path="/more"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <More />
               </AppLayout>
@@ -103,7 +106,6 @@ function App() {
           path="/opportunities/create"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <PostOpportunity />
               </AppLayout>
@@ -114,7 +116,6 @@ function App() {
           path="/marketplace"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Marketplace />
               </AppLayout>
@@ -125,7 +126,6 @@ function App() {
           path="/marketplace/create"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <CreateListing />
               </AppLayout>
@@ -136,7 +136,6 @@ function App() {
           path="/marketplace/:id"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <ListingDetail />
               </AppLayout>
@@ -147,7 +146,6 @@ function App() {
           path="/clubs"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Clubs />
               </AppLayout>
@@ -158,7 +156,6 @@ function App() {
           path="/clubs/create"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <CreateClub />
               </AppLayout>
@@ -169,7 +166,6 @@ function App() {
           path="/clubs/:id"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <ClubDetail />
               </AppLayout>
@@ -180,7 +176,6 @@ function App() {
           path="/noticeboard"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Noticeboard />
               </AppLayout>
@@ -201,15 +196,61 @@ function App() {
           path="/resources"
           element={
             <ProtectedRoute>
-              {" "}
               <AppLayout>
                 <Resources />
+              </AppLayout>
+              /{" "}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/resources/upload"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <AppLayout>
+                <UploadResource />
               </AppLayout>
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <AppLayout>
+                <Profile />
+              </AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile/edit"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <AppLayout>
+                <EditProfile />
+              </AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <AppLayout>
+                <Notifications />
+              </AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+      <ToastContainer position="top-center" autoClose={2500} theme="light" />
+    </HashRouter>
   );
 }
 export default App;

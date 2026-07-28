@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { clubCategories } from "../../lib/dummyData";
 import { ArrowLeft } from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const CreateClub = () => {
   const navigate = useNavigate();
@@ -74,12 +75,9 @@ const CreateClub = () => {
             ))}
           </select>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-[#7c6ff7] text-white py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#6458e8] transition mt-2"
-        >
+        <Button type="submit" className="w-full mt-2">
           Create Club
-        </button>
+        </Button>
       </form>
     </div>
   );

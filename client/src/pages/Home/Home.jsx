@@ -1,5 +1,7 @@
 import { Bookmark, Briefcase, Calendar, ShoppingBag } from "lucide-react";
 import { dontMissItems, feedItems } from "../../lib/dummyData";
+import { useState } from "react";
+import { toast } from "react-toastify";
 const typeStyles = {
   event: {
     icon: Calendar,
@@ -18,6 +20,18 @@ const typeStyles = {
   },
 };
 const Home = () => {
+  const [savedItems,setSavedItems]=useState([])
+  const toggleSave=(title)=>{
+    if(savedItems.includes(title)){
+      setSavedItems(savedItems.filter((t)=>t!==title))
+      toast("Removed from save.",{type:"info"})
+
+    }
+    else{
+      setSavedItems([...savedItems, title])
+      toast("Saved!", {type:"success"})
+    }
+  }
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 md:px-0 md:py-6 overflow-hidden">
       {/* dont miss banner */}
@@ -60,10 +74,12 @@ const Home = () => {
                   <Icon size={12} />
                   {style.label}
                 </span>
-                <Bookmark
-                  size={16}
-                  className="text-gray-300 md:w-4.5 md:h-4.5"
-                />
+                <button onClick={() => toggleSave(item.title)}>
+                  <Bookmark
+                    size={16}
+                    className={savedItems.includes(item.title) ? "text-[#7c6ff7] fill-[#7c6ff7]":"text-gray-300"}
+                  />
+                </button>
               </div>
               <h3 className="font-display font-bold text-sm md:text-lg text-[#1a1a2e] mb-1 md:mb-2">
                 {item.title}

@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { listings } from "../../lib/dummyData";
+import { clubCategories, listings } from "../../lib/dummyData";
 import { ArrowLeft, Flag, MessageCircle, Package } from "lucide-react";
 import { formatPrice } from "../../lib/utils";
+import Avatar from "../../components/ui/Avatar";
+import CoverImage from "../../components/shared/CoverImage";
 
 const ListingDetail = () => {
   const { id } = useParams();
@@ -33,8 +35,7 @@ const ListingDetail = () => {
       </button>
       {/* image area */}
       <div className="h-56 md:h-72 mx-4 md:mx-0 rounded-xl bg-[#f4f3f0] flex items-center justify-center relative">
-        <Package size={48} className="text-[#a0a0b0]" strokeWidth={1.5} />
-        {isSold && (
+<CoverImage src={listing.image} icon={Package} className="h-60 md:h-64 mx-4 md:mx-0 rounded-xl w-[calc(100%-2rem)] md:w-full"/>        {isSold && (
           <div className="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center">
             <span className="text-white text-lg font-bold">SOLD</span>
           </div>
@@ -64,9 +65,7 @@ const ListingDetail = () => {
         </p>
         {/* seller card */}
         <div className="bg-[#f4f3f0] rounded-xl p-4 flex items-center gap-3 mb-6">
-          <div className="w-11 h-11 rounded-full bg-[#eee9ff]  text-[#7c6ff7] flex items-center justify-center font-bold shrink-0">
-            {listing.seller.charAt(0)}
-          </div>
+          <Avatar name={listing.seller} size="md"/>
           <div>
             <p className="text-sm font-semibold text-[#1a1a2e]">
               {listing.seller}

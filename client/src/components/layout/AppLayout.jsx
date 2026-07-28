@@ -13,6 +13,7 @@ import {
   User,
   Users2,
 } from "lucide-react";
+import Avatar from "../ui/Avatar";
 
 const AppLayout = ({ children }) => {
   const location = useLocation();
@@ -58,13 +59,14 @@ const AppLayout = ({ children }) => {
           <span>Search events, clubs, listings...</span>
         </div>
         <div className="flex items-center gap-3">
-          <button className="w-8 h-8 rounded-full bg-[#f4f3f0] flex items-center justify-center relative">
+          <Link
+            to="/notifications"
+            className="w-8 h-8 rounded-full bg-[#f4f3f0] flex items-center justify-center relative"
+          >
             <Bell size={16} />
             <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-white"></span>
-          </button>
-          <div className="w-8 h-8 rounded-full bg-[#eee9ff] text-[#7c6ff7] flex items-center justify-center text-xs font-bold">
-            {initials}
-          </div>
+          </Link>
+          <Avatar name={profile?.full_name} size="sm"/>
         </div>
       </header>
       <div className="flex">

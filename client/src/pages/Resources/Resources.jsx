@@ -1,7 +1,9 @@
 import {
   BookOpen,
   ClipboardList,
+  Download,
   FileText,
+  Layers,
   Plus,
   Presentation,
   Search,
@@ -9,10 +11,13 @@ import {
 import React, { useState } from "react";
 import { resources, resourceTypes } from "../../lib/dummyData";
 import { Link } from "react-router-dom";
+import PageHeader from "../../components/shared/PageHeader";
+import EmptyState from "../../components/shared/EmptyState";
+import Filter from "../../components/shared/Filter";
 
 const typeIcons = {
   "Past Questions": FileText,
-  Note: BookOpen,
+  Notes: BookOpen,
   Slides: Presentation,
   Summary: ClipboardList,
 };
@@ -33,23 +38,12 @@ const Resources = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 md:px-8 py-6 md:py-10">
       {/* page header */}
-      <div className="flex items-center justify-between mb-5 md:mb-6">
-        <div>
-          <h1 className="font-display font-extrabold text-xl md:text-2xl text-[#1a1a2e]">
-            Resources
-          </h1>
-          <p className="text-sm md:text-[15px] text-[#6b6b80] mt-1">
-            Past questions, notes and study materials
-          </p>
-        </div>
-        <Link
-          to="/resources"
-          className="flex items-center gap-1.5 bg-[#7c6ff7] text-white text-xs md:text-sm font-semibold px-3 py-2 md:px-4 md:py-2.5 rounded-lg hover:bg-[#6458e8] transition "
-        >
-          <Plus size={16} />
-          <span className="hidden sm:inline">Upload Resources</span>
-        </Link>
-      </div>
+      <PageHeader
+        title="Resources"
+        subtitle="Past questions, notes and study materials"
+        actionTo="/resources/upload"
+        actionLabel="Upload Resources"
+      />
       {/* search */}
       <div className="flex items-center gap-2 bg-[#f4f3f0] border border-gray-200 rounded-full px-4 py-2.5 mb-4 text-sm">
         <Search size={16} className="text-[#a0a0b0]" />
@@ -63,41 +57,42 @@ const Resources = () => {
       </div>
 
       {/* filter */}
-      <div className="flex gap-2 overflow-x-auto scrollbar-hide mb-6 md:mb-8 ">
-        {resourceTypes.map((type) => (
-          <button
-            key={type}
-            onClick={() => setActiveType(type)}
-            className={`shrink-0 px-3.5 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium border transition ${activeType === type ? "bg-[#7c6ff7] text-white border-[#7c6ff7]" : "bg-white text-[#6b6b80] border-gray-200 hover:border-[#7c6ff7] hover:text-[#7c6ff7] transition"}`}
-          >
-            {type}
-          </button>
-        ))}
-      </div>
-
+      <Filter
+        options={resourceTypes}
+        active={activeType}
+        onChange={setActiveType}
+      />
       {/* resources list */}
-      <div>
-        {filteredResources.map((resource)=>{
-            const Icon=typeIcons[resource.type]
-            return(
-                <div key={resource.id}>
-                    <div>
-                        <Icon/>
-                    </div>
-                </div>
-            )
-            // return(
-            //     <div>
-            //         <div>
-            //             <Icon/>
-            //         </div>
-            //         <div>
-            //             <p>{resource.title}</p>
-            //         </div>
-            //     </div>
-            // )
+      <div className="bg-white border border-gray-200 rounded-xl divide-y divide-gray-100">
+        {filteredResources.map((resource) => {
+          const Icon = typeIcons[resource.type];
+          return (
+            <div
+              key={resource.id}
+              className="flex items-center gap-3 md:gap-4 p-4 md:p-5"
+            >
+              <div className="w-10 h-10 md:w-11 md:h-11 rounded-lg bg-[#eee9ff] flex items-center justify-center shrink-0">
+                <Icon size={18} className="text-[#7c6ff7]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm md:text-base font-semibold text-[#1a1a2e] mb-1 truncate">
+                  {resource.title}
+                </p>
+                <p className="text-xs md:text-sm text-[]#a0a0b0">
+                  {resource.type} . {resource.department} .{" "}
+                  {resource.uploadedAt}
+                </p>
+              </div>
+              <button className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-[#7c6ff7] text-white flex items-center justify-center shrink-0 hover:bg-[#6458e8] transition">
+                <Download size={15} />
+              </button>
+            </div>
+          );
         })}
       </div>
+      {filteredResources.length === 0 && (
+        <EmptyState message="No resources match your search."/>
+      )}
     </div>
   );
 };

@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { clubs } from "../../lib/dummyData";
 import { ArrowLeft, Calendar, MapPin, Users2 } from "lucide-react";
+import { toast } from "react-toastify";
 
 const ClubDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Events");
   const club = clubs.find((c) => c.id === Number(id));
+  const [joined, setJoined] = useState(club?.joined || false);
+  const handleJoin = () => {
+    setJoined(!joined);
+    toast(!joined ? `You joined ${club.name}!` : `You left ${club.name}.`, {
+      type: !joined ? "success" : "info",
+    });
+  };
   if (!club) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-12 text-center">
@@ -44,13 +52,14 @@ const ClubDetail = () => {
             {club.name}
           </h1>
           <button
+          onClick={handleJoin}
             className={`text-xs md:text-sm font-semibold px-3.5 py-1.5 md:px-4 md:py-2 rounded-lg shrink-0 ${
-              club.joined
+              joined
                 ? "bg-white text-[#6b6b80] border border-gray-200"
                 : "bg-[#7c6ff7] text-white hover:bg-[#6458e8] transition"
             }`}
           >
-            {club.joined ? "Joined" : "Join"}
+            {joined ? "Joined" : "Join"}
           </button>
         </div>
         <div className="flex items-center gap-2 mb-4">

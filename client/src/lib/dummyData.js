@@ -1,5 +1,16 @@
 import { Edit } from "lucide-react";
-
+import ATS from "../../src/assets/events/annualtechsummit.jpeg";
+import IDSD from "../../src/assets/events/sport-text-with-children-banner-design_1308-132419.jpg";
+import EOYAE from "../../src/assets/events/IMG_0109-700x700.jpg";
+import GRF from "../../src/assets/events/graduaterecruitmentfair.jpeg";
+import FYPDS from "../../src/assets/events/finalyearproject.jpeg";
+import EOSBN from "../../src/assets/events/camping-under-the-stars-1024x683.jpg"
+import EM from "../../src/assets/listings/9781137031204.jpg"
+import CHEMTEXT from "../../src/assets/listings/chemtext.jpeg"
+import HP from "../../src/assets/listings/61IKsr8Y5uL._AC_UF1000,1000_QL80_.jpg"
+import PRINTER from "../../src/assets/listings/1.jpg"
+import MATHSETS from "../../src/assets/listings/mathset.jpeg"
+import READINGTABLE from "../../src/assets/listings/81fwQ6zH7FL.jpg"
 export const dontMissItems = [
   {
     title: "Tech Fest 2026",
@@ -55,6 +66,7 @@ export const events = [
     organizer: "Tech Society",
     attendees: 142,
     rsvped: false,
+    image: ATS,
   },
   {
     id: 2,
@@ -69,6 +81,7 @@ export const events = [
     organizer: "Student Union",
     attendees: 89,
     rsvped: false,
+    image: IDSD,
   },
   {
     id: 3,
@@ -83,6 +96,7 @@ export const events = [
     organizer: "Theater Art Students",
     attendees: 54,
     rsvped: true,
+    image: EOYAE,
   },
   {
     id: 4,
@@ -97,6 +111,7 @@ export const events = [
     organizer: "Career Centre",
     attendees: 210,
     rsvped: false,
+    image: GRF,
   },
   {
     id: 5,
@@ -111,6 +126,7 @@ export const events = [
     organizer: "CS Department",
     attendees: 76,
     rsvped: false,
+    image: FYPDS,
   },
   {
     id: 6,
@@ -125,6 +141,7 @@ export const events = [
     organizer: "Social Committee",
     attendees: 312,
     rsvped: false,
+    image: EOSBN,
   },
 ];
 export const eventCategories = [
@@ -201,6 +218,7 @@ export const listings = [
     postedAt: "2 days ago",
     status: "active",
     sellerUniversity: "Redeemer's University",
+    image:EM
   },
   {
     id: 2,
@@ -214,6 +232,7 @@ export const listings = [
     postedAt: "3 days ago",
     status: "active",
     sellerUniversity: "Redeemer's University",
+    image:HP
   },
   {
     id: 3,
@@ -227,6 +246,7 @@ export const listings = [
     postedAt: "1 week ago",
     status: "sold",
     sellerUniversity: "Redeemer's University",
+    image:CHEMTEXT
   },
   {
     id: 4,
@@ -240,6 +260,7 @@ export const listings = [
     postedAt: "Today",
     status: "active",
     sellerUniversity: "Redeemer's University",
+    image:PRINTER
   },
   {
     id: 5,
@@ -253,6 +274,7 @@ export const listings = [
     postedAt: "Today",
     status: "active",
     sellerUniversity: "Redeemer's University",
+    image:MATHSETS
   },
   {
     id: 6,
@@ -266,6 +288,7 @@ export const listings = [
     postedAt: "Yesterday",
     status: "active",
     sellerUniversity: "Redeemer's University",
+    image:READINGTABLE
   },
 ];
 export const listingCategories = [
@@ -479,4 +502,53 @@ export const resources = [
     uploadedAt: "1 week ago",
   },
 ];
-export const resourceTypes=["All","Past Questions","Slides","Notes","Summaries"]
+export const resourceTypes = [
+  "All",
+  "Past Questions",
+  "Slides",
+  "Notes",
+  "Summary",
+];
+
+export const notifications = [
+  {
+    id: 1,
+    icon: "calendar",
+    title: "Tech Summit is tomorrow!",
+    body: "Don't forget that the Annual Tech Summit 2026 starts at 10am at Auditorium A",
+    time: "2 hours ago",
+    read: false,
+  },
+  {
+    id: 2,
+    icon: "clock",
+    title: "Deadline alert: Google Scholarship",
+    body: "The Google Generation Scholarship closes in 2 days.",
+    time: "5 hours ago",
+    read: false,
+  },
+  {
+    id: 3,
+    icon: "users",
+    title: "New member in Tech Society",
+    body: "Amara Okafor just joined Tech Society",
+    time: "Yesterday",
+    read: true,
+  },
+  {
+    id: 4,
+    icon: "package",
+    title: "New listing: Laptop for sale",
+    body: "A new gadget was listed in the Marketplace - HP Pavillion N85,000",
+    time: "2 days ago",
+    read: true,
+  },
+  {
+    id: 5,
+    icon: "sparkles",
+    title: "Welcome to Unify!",
+    body: "Your account is set up. Explore events, clubs and opportunities on your campus.",
+    time: "1 week ago",
+    read: true,
+  },
+];

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { noticeCategories } from "../../lib/dummyData";
 import { ArrowLeft } from "lucide-react";
+import Button from "../../components/ui/Button";
 
 const CreateNotice = () => {
   const navigate = useNavigate();
@@ -56,7 +57,9 @@ const CreateNotice = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold mb-1.5 mt-2">Category</label>
+          <label className="block text-sm font-semibold mb-1.5 mt-2">
+            Category
+          </label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -71,12 +74,9 @@ const CreateNotice = () => {
             ))}
           </select>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-[#7c6ff7] text-white py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:bg-[#6458e8] transition mt-2"
-        >
+        <Button type="submit" className="w-full mt-2">
           Post Notice
-        </button>
+        </Button>
       </form>
     </div>
   );
